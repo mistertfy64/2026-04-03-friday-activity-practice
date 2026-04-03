@@ -9,6 +9,19 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - name: Use Checkout
+        uses: actions/checkout@v6
+      - name: Check if file exists
+        run: |
+          ls -la
+      - name: Setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install dependencies
+        run: npm install
+      - name: Build codebase
+        run: npm run build
       - name: Testing
         run: |
           echo "Testing CI/CD pipeline"
